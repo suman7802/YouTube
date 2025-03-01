@@ -21,9 +21,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={`${inter.variable}`}>{children}</body>
-            <SpeedInsights />
-            <Analytics />
+            <body className={`${inter.variable}`}>
+                {children}
+                <SpeedInsights />
+                <Analytics />
+            </body>
         </html>
     );
 }
