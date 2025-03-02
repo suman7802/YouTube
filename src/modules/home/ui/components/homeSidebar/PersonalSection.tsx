@@ -1,7 +1,10 @@
+'use client';
+
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { HistoryIcon, ListVideoIcon, ThumbsUpIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { useClerk, useAuth } from '@clerk/nextjs';
 
 const items = [
     {
@@ -25,6 +28,9 @@ const items = [
 ];
 
 export const PersonalSection = () => {
+    const clerk = useClerk();
+    const { isSignedIn } = useAuth();
+
     return (
         <>
             <SidebarGroup>
@@ -37,6 +43,19 @@ export const PersonalSection = () => {
                                     asChild
                                     tooltip={item.title}
                                     isActive={false} // Todo: Implement this
+                                    //
+                                    //
+                                    // --------------Quick Note-------------
+                                    // for new devlopers on Next.js
+                                    // please use 'use client'; for enable onClick event
+                                    //
+                                    //
+                                    onClick={e => {
+                                        if (item.auth && !isSignedIn) {
+                                            e.preventDefault();
+                                            return clerk.openSignIn();
+                                        }
+                                    }}
                                 >
                                     <Link href={item.url} className='flex items-center gap-4'>
                                         <item.icon />

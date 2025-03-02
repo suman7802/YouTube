@@ -2,6 +2,11 @@
     "name": "youtube",
     "version": "0.1.0",
     "private": true,
+    "author": {
+        "name": "Suman Sharma",
+        "email": "mansu7802@gmail.com",
+        "url": "https://sumansharma.me"
+    },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -10,6 +15,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@clerk/nextjs": "^6.12.1",
         "@radix-ui/react-dialog": "^1.1.6",
         "@radix-ui/react-separator": "^1.1.2",
         "@radix-ui/react-slot": "^1.1.2",
